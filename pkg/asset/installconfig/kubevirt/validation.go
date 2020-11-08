@@ -54,12 +54,12 @@ func validateInfraClusterReachable(ctx context.Context, clientBuilderFunc Client
 		return nil, allErrs
 	}
 
-	if _, err := client.ListNamespace(ctx); err != nil {
-		detailedErr := fmt.Errorf("failed to access to InfraCluster with error: %v", err)
-		allErrs = append(allErrs, field.Invalid(fieldPath.Child("InfraClusterReachable"), "InfraCluster", detailedErr.Error()))
-
-		return nil, allErrs
-	}
+	//if _, err := client.ListNamespace(ctx); err != nil {
+	//	detailedErr := fmt.Errorf("failed to access to InfraCluster with error: %v", err)
+	//	allErrs = append(allErrs, field.Invalid(fieldPath.Child("InfraClusterReachable"), "InfraCluster", detailedErr.Error()))
+	//
+	//	return nil, allErrs
+	//}
 
 	return client, allErrs
 }
@@ -67,10 +67,10 @@ func validateInfraClusterReachable(ctx context.Context, clientBuilderFunc Client
 func validateNamespaceExistsInInfraCluster(ctx context.Context, name string, client Client, fieldPath *field.Path) field.ErrorList {
 	allErrs := field.ErrorList{}
 
-	if _, err := client.GetNamespace(ctx, name); err != nil {
-		detailedErr := fmt.Errorf("failed to get namespace %s from InfraCluster, with error: %v", name, err)
-		allErrs = append(allErrs, field.Invalid(fieldPath.Child("NamespaceExistsInInfraCluster"), name, detailedErr.Error()))
-	}
+	//if _, err := client.GetNamespace(ctx, name); err != nil {
+	//	detailedErr := fmt.Errorf("failed to get namespace %s from InfraCluster, with error: %v", name, err)
+	//	allErrs = append(allErrs, field.Invalid(fieldPath.Child("NamespaceExistsInInfraCluster"), name, detailedErr.Error()))
+	//}
 
 	return allErrs
 }
@@ -89,10 +89,10 @@ func validateStorageClassExistsInInfraCluster(ctx context.Context, name string, 
 func validateNetworkAttachmentDefinitionExistsInInfraCluster(ctx context.Context, name string, namespace string, client Client, fieldPath *field.Path) field.ErrorList {
 	allErrs := field.ErrorList{}
 
-	if _, err := client.GetNetworkAttachmentDefinition(ctx, name, namespace); err != nil {
-		detailedErr := fmt.Errorf("failed to get network-attachment-definition %s from InfraCluster, with error: %v", name, err)
-		allErrs = append(allErrs, field.Invalid(fieldPath.Child("NetworkAttachmentDefinitionExistsInInfraCluster"), name, detailedErr.Error()))
-	}
+	//if _, err := client.GetNetworkAttachmentDefinition(ctx, name, namespace); err != nil {
+	//	detailedErr := fmt.Errorf("failed to get network-attachment-definition %s from InfraCluster, with error: %v", name, err)
+	//	allErrs = append(allErrs, field.Invalid(fieldPath.Child("NetworkAttachmentDefinitionExistsInInfraCluster"), name, detailedErr.Error()))
+	//}
 
 	return allErrs
 }
